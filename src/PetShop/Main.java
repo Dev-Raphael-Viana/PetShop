@@ -32,25 +32,47 @@ public  class Main  {
             }
 
 
+
         } while (controle);
 
+        sc.close();
     }
 
     private static void mostrarPet(List<Pet> listaPets) {
         for (Pet pet : listaPets) {
+            String palavraAno = (pet.getAge() == 1) ? "Ano" : "Anos";
+            String palavraMes = (pet.getMeses() == 1) ? "Mês" : "Meses";
+            String textoIdade = "";
+            if (pet.getAge() > 0) {
+                textoIdade = textoIdade + pet.getAge() + " " + palavraAno;
+            }
+            if (pet.getMeses() > 0) {
+                if (pet.getAge() > 0) {
+                    textoIdade = textoIdade + " e ";
+                }
+                textoIdade = textoIdade + pet.getMeses() + " " + palavraMes;
+            }
+            if (pet.getAge() == 0 && pet.getMeses() == 0) {
+                textoIdade = "Recém-nascido";
+            }
             System.out.println();
-            System.out.println("Nome: " + pet.name);
-            System.out.println("Idade " + pet.age + " Anos");
+            System.out.println("Nome: " + pet.getName());
+            System.out.println("Idade: " + textoIdade);
             System.out.println("============================");
         }
-    }
-    private static void cadastrarPet(Scanner sc, List<Pet> listaPets) {
-        Pet pet = new Pet();
-        System.out.println("Digite o nome do Pet:");
-        pet.name = sc.next();
-        System.out.println("Digite a idade:");
-        pet.age = sc.nextInt();
-        listaPets.add(pet);
 
     }
+    private static void cadastrarPet(Scanner sc, List<Pet> listaPets) {
+        sc.nextLine();
+        System.out.println("Digite o nome do Pet:");
+        String name = sc.nextLine();
+        System.out.println("Digite os anos do Pet (se tiver menos de 1 ano, digite 0):");
+        int age = sc.nextInt();
+        System.out.println("Digite os meses do Pet:");
+        int meses = sc.nextInt();
+        Pet pet = new Pet(name, age, meses);
+        listaPets.add(pet);
+        System.out.println("Pet cadastrado com sucesso!");
+    }
 }
+
