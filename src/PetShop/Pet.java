@@ -4,14 +4,16 @@ public class Pet {
     public String name;
     private int age;
     private int meses;
+    private double peso;
 
     public Pet() {
 
     }
-    public Pet(String name, int age, int meses) {
+    public Pet(String name, int age, int meses, double peso) {
         this.name = name;
         this.age = age;
         this.meses = meses;
+        this.peso = peso;
     }
 
     public String getName() {
@@ -36,5 +38,11 @@ public class Pet {
 
     public void setMeses(int meses) {
         this.meses = meses;
+    }
+    public double getPeso() {
+        return peso;
+    }
+    public void setPeso(double peso) {
+        this.peso = peso;
     }
 }
