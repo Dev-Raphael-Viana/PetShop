@@ -80,7 +80,7 @@ public class Main {
     // VISÃO DO ADMINISTRADOR
     private static boolean fazerLoginAdmin(Scanner sc) {
         System.out.print("\nDigite a senha do administrador (Dica: admin123): ");
-        sc.nextLine(); // Limpar buffer
+        sc.nextLine();
         String senha = sc.nextLine();
         return senha.equals("admin123");
     }
